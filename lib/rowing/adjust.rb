@@ -4,8 +4,8 @@ module Rowing
     
       def weight_adjust_distance(weight, time, weight_measure = "kg")
         if weight_measure == "kg"
-          score = ((weight.to_f * 2.2) / 270)**0.222 * ::Rowing::Speed.parse_time(time)
-          score
+          time = time.is_a? Float ? time : Speed.parse_time(time)
+          return ((weight.to_f * 2.2) / 270)**0.222 * time
         end
       end
     end
